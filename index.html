@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CourtLens UI Prototype</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="prototype-shell">
+      <section class="workspace">
+        <header class="workspace-header">
+          <div>
+            <p class="eyebrow">AI Fan Engagement</p>
+            <h1>CourtLens</h1>
+          </div>
+          <div class="mode-switch" aria-label="프로토타입 화면 전환">
+            <button class="mode-button active" type="button" data-view="fan">팬 앱</button>
+            <button class="mode-button" type="button" data-view="club">구단 대시보드</button>
+          </div>
+        </header>
+
+        <section class="view-grid view-active" id="fan-view">
+          <article class="phone-frame" aria-label="CourtLens 팬 앱 화면">
+            <div class="phone-status">
+              <span>9:41</span>
+              <span>5G 82%</span>
+            </div>
+
+            <div class="app-header">
+              <div>
+                <span class="mini-label">오늘의 코트</span>
+                <strong>창원 LG 세이커스 맞춤 코트</strong>
+              </div>
+              <button
+                class="avatar-button"
+                type="button"
+                aria-label="마이페이지 열기"
+                aria-controls="profile-sheet"
+                aria-expanded="false"
+              >
+                MY
+              </button>
+            </div>
+
+            <section class="spotlight-card">
+              <div class="spotlight-copy">
+                <span class="pill dark">AI 편집 완료</span>
+                <h2>유기상 3점 하이라이트 모음</h2>
+                <p>팔로우한 창원 LG 장면만 2분 18초로 압축했어요.</p>
+              </div>
+              <div class="court-visual hero-court" aria-hidden="true">
+                <span class="player-dot dot-a"></span>
+                <span class="player-dot dot-b"></span>
+                <span class="player-dot dot-c"></span>
+                <span class="ball-dot"></span>
+              </div>
+            </section>
+
+            <section class="follow-panel" aria-label="팔로우 선택">
+              <div class="section-title-row">
+                <h3>내 팀/선수</h3>
+                <span id="follow-count">3명 선택됨</span>
+              </div>
+              <div class="chip-row player-chip-row" id="player-chip-row" aria-label="하이라이트 생성 선수 선택">
+                <button class="follow-chip active" type="button">유기상</button>
+                <button class="follow-chip active" type="button">아셈 마레이</button>
+                <button class="follow-chip active" type="button">양준석</button>
+                <button class="follow-chip" type="button">칼 타마요</button>
+                <button class="follow-chip" type="button">정인덕</button>
+                <button class="follow-chip" type="button">양홍석</button>
+                <button class="follow-chip" type="button">두경민</button>
+                <button class="follow-chip" type="button">허일영</button>
+              </div>
+              <div class="generate-row">
+                <span id="selection-hint">선택한 선수 기준으로 AI가 하이라이트를 생성합니다.</span>
+                <button class="generate-button" id="generate-highlight-button" type="button">
+                  하이라이트 생성
+                </button>
+              </div>
+            </section>
+
+            <nav class="content-tabs" aria-label="팬 앱 주요 메뉴">
+              <button class="content-tab active" type="button" data-panel="highlight">하이라이트</button>
+              <button class="content-tab" type="button" data-panel="pass">입덕패스</button>
+              <button class="content-tab" type="button" data-panel="mate">직관메이트</button>
+            </nav>
+
+            <section
+              class="highlight-feed fan-panel panel-active"
+              data-panel="highlight"
+              aria-label="개인화 하이라이트 피드"
+            >
+              <div class="section-title-row">
+                <h3>방금 생성된 클립</h3>
+                <span id="clip-count-label">12개</span>
+              </div>
+              <div class="clip-filter-row" aria-label="하이라이트 필터">
+                <button class="clip-filter-button active" type="button" data-clip-filter="all">
+                  전체
+                </button>
+                <button class="clip-filter-button" type="button" data-clip-filter="generated">
+                  AI 생성
+                </button>
+                <button class="clip-filter-button" type="button" data-clip-filter="selected">
+                  선택 선수
+                </button>
+              </div>
+
+              <div class="clip-list" id="clip-list">
+                <button class="highlight-card selected" type="button" data-clip="assist">
+                  <span class="clip-thumb court-visual">
+                    <span class="clip-time">0:18</span>
+                    <span class="player-dot dot-a"></span>
+                    <span class="player-dot dot-b"></span>
+                  </span>
+                  <span class="clip-copy">
+                    <strong>양준석 픽앤롤 → 유기상 코너 3점</strong>
+                    <small>양준석 · 4Q 01:22 · 어시스트</small>
+                  </span>
+                  <span class="clip-score">+3</span>
+                </button>
+
+                <button class="highlight-card" type="button" data-clip="clutch">
+                  <span class="clip-thumb court-visual warm">
+                    <span class="clip-time">0:12</span>
+                    <span class="player-dot dot-c"></span>
+                    <span class="ball-dot"></span>
+                  </span>
+                  <span class="clip-copy">
+                    <strong>유기상 트랜지션 3점</strong>
+                    <small>유기상 · 4Q 00:44 · 3점슛</small>
+                  </span>
+                  <span class="clip-score">+3</span>
+                </button>
+
+                <button class="highlight-card" type="button" data-clip="rookie">
+                  <span class="clip-thumb court-visual cool">
+                    <span class="clip-time">0:21</span>
+                    <span class="player-dot dot-d"></span>
+                    <span class="player-dot dot-e"></span>
+                  </span>
+                  <span class="clip-copy">
+                    <strong>아셈 마레이 세컨드 찬스</strong>
+                    <small>아셈 마레이 · 2Q 06:10 · 리바운드</small>
+                  </span>
+                  <span class="clip-score">+2</span>
+                </button>
+              </div>
+            </section>
+
+            <section class="pass-panel fan-panel" data-panel="pass" aria-label="입덕패스">
+              <div class="section-title-row">
+                <h3 id="pass-title">LG 입덕패스</h3>
+                <span>초보자용</span>
+              </div>
+              <article class="pass-card">
+                <span class="pill">AI 요약</span>
+                <strong>오늘 처음 봐도 이해되는 3분 코스</strong>
+                <p id="pass-copy">
+                  양준석의 패스, 유기상의 3점, 아셈 마레이의 리바운드를 초보자 설명으로 묶었습니다.
+                </p>
+                <ul class="pass-list">
+                  <li><span></span> 양준석이 만든 찬스를 30초 카드로 설명</li>
+                  <li><span></span> 유기상 3점 위치를 코트맵으로 정리</li>
+                  <li><span></span> 아셈 마레이 리바운드 후 세컨드 찬스 모음</li>
+                </ul>
+              </article>
+            </section>
+
+            <section class="mate-panel fan-panel" data-panel="mate" aria-label="직관메이트">
+              <div class="section-title-row">
+                <h3>직관메이트</h3>
+                <span id="mate-count">3팀 모집중</span>
+              </div>
+
+              <article class="mate-compose">
+                <div>
+                  <span class="mini-label" id="mate-venue">창원체육관 · 서울 SK전</span>
+                  <strong id="mate-main-title">같이 직관가실 분 구해요!</strong>
+                  <p id="mate-main-copy">
+                    창원체육관 서울 SK전에서 유기상 하이라이트를 같이 볼 메이트를 추천합니다.
+                  </p>
+                  <small id="mate-seat">창원 응원석 선호</small>
+                  <div class="mate-form-preview" aria-label="모집글 조건">
+                    <div>
+                      <span>경기</span>
+                      <strong id="mate-game-choice">다음 홈경기</strong>
+                    </div>
+                    <div>
+                      <span>좌석</span>
+                      <strong id="mate-seat-choice">응원석</strong>
+                    </div>
+                    <div>
+                      <span>성향</span>
+                      <strong id="mate-style-choice">초보 환영</strong>
+                    </div>
+                  </div>
+                  <p class="safety-note">공개 범위, 신고, 차단 안내를 포함한 안전한 모집글 초안으로 생성됩니다.</p>
+                </div>
+                <button class="primary-action" type="button" data-open-mate-create>
+                  <span id="mate-create-label">모집하기</span>
+                </button>
+              </article>
+
+              <div class="mate-list" aria-label="직관메이트 모집글">
+                <article class="mate-card">
+                  <div>
+                    <strong>LG 첫 직관 같이 가요</strong>
+                    <small>창원 · 초보자 환영 · 2명 모집</small>
+                  </div>
+                  <div class="mate-tags">
+                    <span class="mate-tag">창원 홈 응원석</span>
+                    <span class="mate-tag">처음 직관 환영</span>
+                  </div>
+                </article>
+                <article class="mate-card">
+                  <div>
+                    <strong>유기상 3점 보러 가실 분</strong>
+                    <small>서울 SK전 · 응원가 크게 부르는 편</small>
+                  </div>
+                  <div class="mate-tags">
+                    <span class="mate-tag">3점 하이라이트</span>
+                    <span class="mate-tag">하이라이트 분석 공유</span>
+                  </div>
+                </article>
+                <article class="mate-card">
+                  <div>
+                    <strong>아셈 마레이 골밑 싸움 같이 볼 사람</strong>
+                    <small>혼직관 방지 · 경기 전 30분 합류</small>
+                  </div>
+                  <div class="mate-tags">
+                    <span class="mate-tag">전술 이야기</span>
+                    <span class="mate-tag">창원 홈 응원석</span>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <section
+              class="profile-sheet"
+              id="profile-sheet"
+              aria-hidden="true"
+              aria-labelledby="profile-title"
+            >
+              <button
+                class="profile-backdrop"
+                type="button"
+                aria-label="마이페이지 닫기"
+                data-close-profile
+              ></button>
+              <div class="profile-card" role="dialog" aria-modal="true">
+                <div class="profile-topline">
+                  <span class="mini-label">마이페이지</span>
+                  <button class="sheet-close" type="button" aria-label="닫기" data-close-profile>
+                    ×
+                  </button>
+                </div>
+                <h3 id="profile-title">케이트님, 어떤 팀으로 볼까요?</h3>
+                <p id="profile-summary">
+                  현재 창원 LG 기준으로 하이라이트, 입덕패스, 직관메이트 추천이 개인화됩니다.
+                </p>
+                <div class="profile-current">
+                  <span>로그인된 선호팀</span>
+                  <strong id="profile-team-name">창원 LG 세이커스</strong>
+                  <small id="profile-data-note">등록 선수 25명 · 기록 선수 19명</small>
+                </div>
+                <div class="team-option-list" aria-label="선호팀 변경">
+                  <button class="team-option active" type="button" data-team-code="50" aria-pressed="true">
+                    <span class="team-mark lg-mark"></span>
+                    <span>
+                      <strong>창원 LG 세이커스</strong>
+                      <small>현재 선택됨 · 마룬/옐로 테마</small>
+                    </span>
+                  </button>
+                  <button class="team-option" type="button" data-team-code="06" aria-pressed="false">
+                    <span class="team-mark kt-mark"></span>
+                    <span>
+                      <strong>수원 KT 소닉붐</strong>
+                      <small>두 번째 팀 · 레드/다크 테마</small>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </section>
+          </article>
+
+          <aside class="detail-panel" aria-label="선택한 하이라이트 상세">
+            <div class="panel-topline">
+              <span class="pill">작전판AI</span>
+              <div class="explain-toggle" aria-label="해설 난이도">
+                <button class="level-button active" type="button" data-level="easy">초보</button>
+                <button class="level-button" type="button" data-level="pro">농잘알</button>
+              </div>
+            </div>
+
+            <section class="kbl-data-strip" aria-label="KBL 공식 창원 LG 선수 데이터">
+              <article>
+                <span>LG 어시스트 1위</span>
+                <strong id="assist-leader-name">양준석</strong>
+                <small id="assist-leader-stat">6.0 AST · 총 293개</small>
+              </article>
+              <article>
+                <span>LG 3점 1위</span>
+                <strong id="score-leader-name">유기상</strong>
+                <small id="score-leader-stat">2.6 3PM · 총 132개</small>
+              </article>
+              <article>
+                <span>LG 리바운드 1위</span>
+                <strong id="rebound-leader-name">아셈 마레이</strong>
+                <small id="rebound-leader-stat">14.2 REB · 총 739개</small>
+              </article>
+            </section>
+
+            <section class="clip-preview">
+              <div class="clip-stage court-visual">
+                <span class="scan-line"></span>
+                <span class="player-dot dot-a"></span>
+                <span class="player-dot dot-b"></span>
+                <span class="player-dot dot-c"></span>
+                <span class="ball-dot"></span>
+              </div>
+              <div class="playback-bar">
+                <span></span>
+              </div>
+            </section>
+
+            <section class="analysis-card">
+              <div class="section-title-row">
+                <h2 id="analysis-title">양준석 픽앤롤 → 유기상 코너 3점</h2>
+                <span id="analysis-meta">양준석 · 어시스트</span>
+              </div>
+              <p id="analysis-text">
+                양준석이 스크린을 타고 들어가며 수비를 안쪽으로 끌어당겼어요.
+                그 순간 코너의 유기상에게 패스가 빠르게 나가면서 좋은 3점 찬스가 만들어졌습니다.
+              </p>
+            </section>
+
+            <section class="timeline-card">
+              <h3>입덕패스</h3>
+              <div class="story-stack">
+                <div>
+                  <strong>오늘 봐야 할 이유</strong>
+                  <p id="story-reason">양준석은 LG 내부 어시스트 1위라 패스 장면을 입덕 포인트로 잡기 좋아요.</p>
+                </div>
+                <div>
+                  <strong>다음 행동</strong>
+                  <p id="story-next">창원 LG 홈경기에서 같은 2대2 전개와 코너 3점 패턴을 이어서 볼 수 있어요.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="cta-panel">
+              <div>
+                <span class="mini-label">직관메이트</span>
+                <h3 id="cta-title">창원체육관 홈경기 알림</h3>
+                <p id="cta-copy">양준석-유기상 연결 장면과 응원석 추천을 같이 확인하세요.</p>
+              </div>
+              <div class="cta-actions">
+                <button class="primary-action" type="button" data-open-mate-create>메이트 찾기</button>
+                <button class="secondary-action" type="button" data-open-mate-create>모집글 쓰기</button>
+              </div>
+            </section>
+          </aside>
+        </section>
+
+        <section class="club-dashboard" id="club-view" aria-label="구단용 팬 데이터 대시보드">
+          <header class="dashboard-hero">
+            <div>
+              <p class="eyebrow">Club Revenue Console</p>
+              <h2>팬 반응을 티켓·굿즈 매출로 연결</h2>
+            </div>
+            <div class="match-chip">
+              <span>최근 경기</span>
+              <strong>창원 LG 세이커스</strong>
+              <small id="dashboard-source-label">KBL 공식 API 기준</small>
+            </div>
+          </header>
+
+          <section class="metric-grid" aria-label="핵심 지표">
+            <article class="metric-card clickable-card" role="button" tabindex="0" data-metric-detail="roster">
+              <span>등록 선수</span>
+              <strong>25</strong>
+              <small>현재 등록 엔트리 29명 중 코치진 제외</small>
+            </article>
+            <article class="metric-card clickable-card" role="button" tabindex="0" data-metric-detail="stats">
+              <span>기록 선수</span>
+              <strong>19</strong>
+              <small>2025-2026 정규시즌 기록 보유</small>
+            </article>
+            <article class="metric-card clickable-card" role="button" tabindex="0" data-metric-detail="clips">
+              <span>AI 클립 후보</span>
+              <strong>57</strong>
+              <small>득점·패스·리바운드 장면 우선 큐</small>
+            </article>
+            <article class="metric-card clickable-card" role="button" tabindex="0" data-metric-detail="season">
+              <span>데이터 기준</span>
+              <strong>2025-2026</strong>
+              <small>KBL 공식 선수/기록 API 최신화</small>
+            </article>
+          </section>
+
+          <section class="league-team-panel dashboard-card" aria-label="KBL 10개 구단 데이터">
+            <div class="section-title-row">
+              <h3>KBL 10개 구단 데이터</h3>
+              <span>구단 클릭 시 대시보드 전환</span>
+            </div>
+            <div class="league-team-grid" id="league-team-grid"></div>
+          </section>
+
+          <section class="dashboard-grid">
+            <article class="dashboard-card wide">
+              <div class="section-title-row">
+                <h3>선수별 팬 반응</h3>
+                <span>선수 클릭 시 상세</span>
+              </div>
+              <div class="bar-list">
+                <div class="bar-row clickable-row" role="button" tabindex="0" data-player-index="0">
+                  <span>유기상</span>
+                  <div class="bar-track"><span style="width: 92%"></span></div>
+                  <strong>92</strong>
+                </div>
+                <div class="bar-row clickable-row" role="button" tabindex="0" data-player-index="1">
+                  <span>아셈 마레이</span>
+                  <div class="bar-track"><span style="width: 90%"></span></div>
+                  <strong>90</strong>
+                </div>
+                <div class="bar-row clickable-row" role="button" tabindex="0" data-player-index="2">
+                  <span>양준석</span>
+                  <div class="bar-track"><span style="width: 86%"></span></div>
+                  <strong>86</strong>
+                </div>
+                <div class="bar-row clickable-row" role="button" tabindex="0" data-player-index="3">
+                  <span>칼 타마요</span>
+                  <div class="bar-track"><span style="width: 84%"></span></div>
+                  <strong>84</strong>
+                </div>
+              </div>
+            </article>
+
+            <article class="dashboard-card">
+              <h3>전환 퍼널</h3>
+              <div class="funnel">
+                <div class="clickable-row" role="button" tabindex="0" data-funnel-stage="clip-view"><span>클립 조회</span><strong>42K</strong></div>
+                <div class="clickable-row" role="button" tabindex="0" data-funnel-stage="ai-create"><span>AI 클립 생성</span><strong>11K</strong></div>
+                <div class="clickable-row" role="button" tabindex="0" data-funnel-stage="mate-click"><span>직관메이트 클릭</span><strong>3.2K</strong></div>
+                <div class="clickable-row" role="button" tabindex="0" data-funnel-stage="commerce-click"><span>티켓·굿즈 CTA</span><strong>640</strong></div>
+              </div>
+            </article>
+
+            <article class="dashboard-card">
+              <h3>콘텐츠 자동 생성 큐</h3>
+              <ul class="queue-list">
+                <li class="clickable-row" role="button" tabindex="0" data-content-index="0"><span></span> 유기상 3점 숏폼 8개</li>
+                <li class="clickable-row" role="button" tabindex="0" data-content-index="1"><span></span> 양준석 어시스트 연결 5개</li>
+                <li class="clickable-row" role="button" tabindex="0" data-content-index="2"><span></span> 아셈 마레이 리바운드 카드뉴스 3개</li>
+                <li class="clickable-row" role="button" tabindex="0" data-content-index="3"><span></span> 창원 LG 홈경기 예매 배너 6개</li>
+              </ul>
+            </article>
+
+            <article class="dashboard-card wide">
+              <div class="section-title-row">
+                <h3>장면별 수익화 추천</h3>
+                <span>AI 제안</span>
+              </div>
+              <div class="recommendation-table">
+                <div class="table-row head">
+                  <span>장면</span>
+                  <span>반응</span>
+                  <span>추천 액션</span>
+                </div>
+                <div class="table-row clickable-row" role="button" tabindex="0" data-revenue-index="0">
+                  <span>양준석 코너 킥아웃</span>
+                  <span>공유율 18%</span>
+                  <span>다음 홈경기 알림</span>
+                </div>
+                <div class="table-row clickable-row" role="button" tabindex="0" data-revenue-index="1">
+                  <span>유기상 트랜지션 3점</span>
+                  <span>저장 1,204</span>
+                  <span>슈터 굿즈 연결</span>
+                </div>
+                <div class="table-row clickable-row" role="button" tabindex="0" data-revenue-index="2">
+                  <span>아셈 마레이 세컨드 찬스</span>
+                  <span>신규 팬 유입 +9%</span>
+                  <span>입덕패스 시리즈</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="dashboard-card wide action-menu-card">
+              <div class="section-title-row">
+                <h3>액션 메뉴</h3>
+                <span>Revenue Playbook</span>
+              </div>
+              <div class="action-menu-grid" aria-label="구단 대시보드 실행 메뉴">
+                <button type="button" data-dashboard-menu="campaign">
+                  <strong>Campaign Builder</strong>
+                  <span>추천 액션을 팬 앱 캠페인 카드로 생성</span>
+                </button>
+                <button type="button" data-dashboard-menu="sponsor">
+                  <strong>Sponsor Package</strong>
+                  <span>인기 장면과 반응을 스폰서 제안서로 묶기</span>
+                </button>
+                <button type="button" data-dashboard-menu="voice">
+                  <strong>Fan Voice</strong>
+                  <span>팬 의견/투표를 AI가 분류하는 확장 기능</span>
+                </button>
+                <button type="button" data-dashboard-menu="ops">
+                  <strong>Matchday Ops</strong>
+                  <span>직관메이트와 좌석 선호를 경기일 운영에 반영</span>
+                </button>
+              </div>
+            </article>
+
+            <article class="dashboard-card wide asset-vault-card">
+              <div class="section-title-row">
+                <h3>생성 결과함</h3>
+                <span id="asset-count-label">0개 문서</span>
+              </div>
+              <div class="asset-list" id="asset-list">
+                <div class="asset-empty">
+                  액션 메뉴나 추천 캠페인에서 생성한 문서가 여기에 저장됩니다.
+                </div>
+              </div>
+            </article>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <div class="app-toast" id="app-toast" role="status" aria-live="polite"></div>
+
+    <section class="app-modal" id="mate-create-modal" aria-hidden="true" aria-labelledby="mate-modal-title">
+      <button class="modal-backdrop" type="button" aria-label="직관메이트 작성 닫기" data-close-mate></button>
+      <form class="modal-card mate-modal-card" id="mate-create-form">
+        <div class="modal-topline">
+          <span class="mini-label">직관메이트 모집글</span>
+          <button class="sheet-close" type="button" aria-label="닫기" data-close-mate>×</button>
+        </div>
+        <h3 id="mate-modal-title">같이 직관가실 분 구해요!</h3>
+        <p class="modal-copy">
+          관심 선수와 하이라이트를 기준으로 같은 장면을 본 팬에게 추천되는 모집글을 만듭니다.
+        </p>
+        <div class="form-grid">
+          <label>
+            <span>직관 날짜</span>
+            <input id="mate-date-input" type="text" value="다음 홈경기" />
+          </label>
+          <label>
+            <span>경기 선택</span>
+            <select id="mate-game-input">
+              <option>다음 홈경기</option>
+              <option>주말 홈경기</option>
+              <option>라이벌전</option>
+            </select>
+          </label>
+          <label>
+            <span>좌석 위치</span>
+            <select id="mate-seat-input">
+              <option>응원석</option>
+              <option>1층 사이드</option>
+              <option>2층 중앙</option>
+            </select>
+          </label>
+          <label>
+            <span>응원 성향</span>
+            <select id="mate-style-input">
+              <option>초보 환영</option>
+              <option>응원가 크게</option>
+              <option>전술 이야기</option>
+              <option>조용히 관전</option>
+            </select>
+          </label>
+          <label>
+            <span>관심 선수</span>
+            <select id="mate-player-input"></select>
+          </label>
+          <label class="full">
+            <span>자유 텍스트</span>
+            <textarea id="mate-note-input" rows="3">하이라이트 보고 같이 경기 보실 분 찾아요. 처음 직관이어도 편하게 오세요.</textarea>
+          </label>
+        </div>
+        <div class="modal-actions">
+          <button class="secondary-action" type="button" data-close-mate>취소</button>
+          <button class="primary-action" type="submit">모집글 생성</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="app-modal" id="dashboard-modal" aria-hidden="true" aria-labelledby="dashboard-modal-title">
+      <button class="modal-backdrop" type="button" aria-label="구단 상세 닫기" data-close-dashboard-modal></button>
+      <article class="modal-card dashboard-modal-card" role="dialog" aria-modal="true">
+        <div class="modal-topline">
+          <span class="mini-label" id="dashboard-modal-kicker">Club Action Detail</span>
+          <button class="sheet-close" type="button" aria-label="닫기" data-close-dashboard-modal>×</button>
+        </div>
+        <h3 id="dashboard-modal-title">상세 정보</h3>
+        <p class="modal-copy" id="dashboard-modal-subtitle">팬 반응을 실행 가능한 액션으로 연결합니다.</p>
+        <div id="dashboard-modal-body"></div>
+      </article>
+    </section>
+
+    <script src="./kbl-data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

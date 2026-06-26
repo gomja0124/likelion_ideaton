@@ -1,0 +1,6 @@
+.DS_Store
+outputs/.DS_Store
+outputs/pdf/.DS_Store
+tmp/
+node_modules/
+*.log
